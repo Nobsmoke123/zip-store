@@ -1,6 +1,6 @@
 import "./App.css";
 import HomePage from "./pages/home/homepage.component";
-import { Route, Routes } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 const HatsPage = () => (
   <>
@@ -11,10 +11,10 @@ const HatsPage = () => (
 function App() {
   return (
     <div>
-      <Routes>
-        <Route exact path="/" Component={HomePage} />
-        <Route path="/hats" Component={HatsPage} />
-      </Routes>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/hats" component={HatsPage} />
+      </Switch>
     </div>
   );
 }
