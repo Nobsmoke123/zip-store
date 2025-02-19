@@ -49,7 +49,7 @@ class SignIn extends React.Component {
             required
           />
 
-          <div className="button-panel">
+          <div className="buttons">
             <CustomButton type="submit">Sign in</CustomButton>
             <CustomButton
               type="button"

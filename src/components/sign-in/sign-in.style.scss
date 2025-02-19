@@ -1,17 +1,15 @@
 .sign-in {
-    width: 30vw;
+    width: 450px;
     display: flex;
     flex-direction: column;
-
-    padding: 20px 20px; // Remove this line of code
-    border: 1px solid black; // Remove this line of code
+    padding: 20px 10px;
     
     .title {
         margin: 10px;
     }
 
     // Remove code
-    .button-panel {
+    .buttons {
         display: flex;
         justify-content: space-between;
     }
