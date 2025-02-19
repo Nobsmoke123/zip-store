@@ -18,6 +18,13 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    auth.onAuthStateChanged((user) => {
+      console.log(user);
+      this.setState({ currentUser: user });
+    });
+  }
+
   render() {
     return (
       <div>
