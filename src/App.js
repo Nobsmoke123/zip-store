@@ -18,11 +18,17 @@ class App extends Component {
     };
   }
 
+  unsubscribeFromAuth = null;
+
   componentDidMount() {
-    auth.onAuthStateChanged((user) => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
       console.log(user);
       this.setState({ currentUser: user });
     });
+  }
+
+  componentWillUnmount() {
+    this.unsubscribeFromAuth();
   }
 
   render() {
