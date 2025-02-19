@@ -3,7 +3,18 @@
     display: flex;
     flex-direction: column;
 
+    padding: 20px 20px; // Remove this line of code
+    border: 1px solid black; // Remove this line of code
+    
     .title {
         margin: 10px;
     }
+
+    // Remove code
+    .button-panel {
+        display: flex;
+        justify-content: space-between;
+    }
+
+
 }
