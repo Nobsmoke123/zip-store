@@ -4,6 +4,8 @@ import { getFirestore, setDoc, getDoc, doc } from "firebase/firestore";
 
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
+export { createUserWithEmailAndPassword } from "firebase/auth";
+
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
