@@ -6,7 +6,7 @@ import { ShopPage } from "./pages/shop/shop.component";
 
 import Header from "./components/header/header.component";
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
-import { auth } from "./firebase/firebase.util";
+import { auth, createUserProfileDocument } from "./firebase/firebase.util";
 import { Component } from "react";
 
 class App extends Component {
@@ -21,8 +21,9 @@ class App extends Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
-      this.setState({ currentUser: user });
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
+      const result = await createUserProfileDocument(user);
+      this.setState({ currentUser: result });
     });
   }
 

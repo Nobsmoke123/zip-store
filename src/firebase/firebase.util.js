@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, setDoc, getDoc, doc } from "firebase/firestore";
 
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
@@ -26,5 +26,32 @@ provider.setCustomParameters({ prompt: "select_account" });
 
 export const signInWithGoogle = () =>
   signInWithPopup(auth, provider).catch((error) => console.log(error));
+
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+  try {
+    if (!userAuth) return;
+
+    const userRef = doc(firestore, "users", `${userAuth.uid}`);
+    const userDoc = await getDoc(userRef);
+
+    // If there's no data in the snapshot create a new data and store it in that userRef.
+    if (!userDoc.exists()) {
+      const { displayName, email } = userAuth;
+      const createdAt = new Date();
+
+      await setDoc(doc(firestore, "users", userAuth.uid), {
+        displayName,
+        email,
+        createdAt,
+        ...additionalData,
+      });
+    }
+
+    return (await getDoc(userRef)).data();
+  } catch (error) {
+    console.log("Error creating user");
+    console.log(error);
+  }
+};
 
 export default app;
