@@ -43,6 +43,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         displayName,
         email,
         createdAt,
+        userId: userAuth.uid,
         ...additionalData,
       });
     }
