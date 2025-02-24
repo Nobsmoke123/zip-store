@@ -6,6 +6,7 @@ import { ShopPage } from "./pages/shop/shop.component";
 
 import Header from "./components/header/header.component";
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
+import CheckOutPage from "./pages/checkout/checkout.component";
 import { auth, createUserProfileDocument } from "./firebase/firebase.util";
 import { Component } from "react";
 import { connect } from "react-redux";
@@ -49,6 +50,7 @@ class App extends Component {
               )
             }
           />
+          <Route exact path="/checkout" component={CheckOutPage} />
         </Switch>
       </div>
     );
