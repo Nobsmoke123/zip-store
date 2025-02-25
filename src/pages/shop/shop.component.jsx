@@ -3,11 +3,16 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectShopCollections } from "../../redux/shop/shop.selector";
 import CollectionsOverviewComponent from "../../components/collections-overview/collections-overview.component";
+import { Route } from "react-router-dom";
 
-const ShopPage = ({ collections }) => {
+const ShopPage = ({ match }) => {
   return (
     <div>
-      <CollectionsOverviewComponent />
+      <Route  
+        exact
+        path={`${match.path}`}
+        component={CollectionsOverviewComponent}
+      />
     </div>
   );
 };
